@@ -91,7 +91,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -105,7 +105,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if session.get('nickname') %}
                     <li>
-                        <a href="/admin/{{ session.get('username') }}" title="个人主页">{{ session.get('nickname') }}</a>
+                        <a href="/admin/{{ session.get('username') }}" title="个人主页" id="nickname_top">{{ session.get('nickname') }}</a>
                     </li>
                     {% endif %}
                     <li>
@@ -117,7 +117,7 @@
                     </li>
 
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
 
                     <li>
@@ -165,7 +165,7 @@
 <div class="container">
     <div class="row">
         <div class="
-            col-lg-8 col-lg-offset-2
+            col-lg-9 col-lg-offset-2
             col-md-10 col-md-offset-1
             post-container
             ">
@@ -324,8 +324,6 @@
             var $nav = document.querySelector("nav");
             if ($nav) FastClick.attach($nav);
         })
-
-
 </script>
 
 <script>
@@ -353,12 +351,14 @@
         }
 
         function confirm_nickname(){
+            var username = $("#username").text();
             var nickname = $("#edit_nickname").val();
             if(nickname==""){
                 alert("不能为空!");
                 return;
             }
             var form = new FormData();
+            form.append("username", username);
             form.append("field", "nickname");
             form.append("nickname", nickname);
             $.ajax({
@@ -373,6 +373,7 @@
                     if (data == 1) {
                         alert('昵称修改成功!');
                         $("#nickname").text(nickname);
+                        $("#nickname_top").text(nickname);
                         $("#edit_nickname").val(nickname);
                     }
                     else if (data == 0) {
@@ -387,8 +388,10 @@
         }
 
         function confirm_sex(){
+            var username = $("#username").text();
             var sex = $("input[name='sex']:checked").val();
             var form = new FormData();
+            form.append("username", username);
             form.append("field", "sex");
             form.append("sex", sex);
             $.ajax({
@@ -422,12 +425,14 @@
         }
 
         function confirm_password(){
+            var username = $("#username").text();
             var password = $("#edit_password").val();
             if(password==""){
                 alert("不能为空!");
                 return;
             }
             var form = new FormData();
+            form.append("username", username);
             form.append("field", "password");
             form.append("password", password);
             $.ajax({

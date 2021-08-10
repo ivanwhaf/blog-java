@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="baidu_union_verify" content="c473ddba0eb7b759f6551f311f22131d">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="这是Ivan的个人博客，以Python、Unity3D、Java、图像识别、深度学习、爬虫、数据分析为主">
-    <meta name="keywords" content="个人博客、Python、爬虫、深度学习、数据挖掘、Unity3D、图像识别">
+    <meta name="description" content="这是Ivan的个人博客，机器学习、深度学习、图像识别、爬虫、数据分析、Python、Java、Unity3D">
+    <meta name="keywords" content="个人博客、机器学习、深度学习、图像识别、爬虫、数据分析、Python、Java、Unity3D">
     <meta name="robots" content="all">
     <script src="/static/js/fastclick.min.js"></script>
     <script async="" defer="" src="/static/js/buttons.js"></script>
@@ -20,7 +20,7 @@
     <!--
 	<link rel="shortcut icon" href="/static/photo/1.ico">
 	-->
-    <link rel="icon" href="/static/photo/1.png" type="image/x-icon"/>
+    <link rel="icon" href="/static/photo/1.png" type="image/png"/>
 
     <link rel="canonical" href="http://www.ivana.work">
 
@@ -81,7 +81,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -99,7 +99,7 @@
                         <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
                     <li>
                         <a href="/tags">Tags</a>
@@ -153,17 +153,17 @@
             col-xs-12
             post-container" id="essay">
 
-            {% for da in data %}
+            {% for article in articles_lst %}
             <div class="post-preview">
-                <a href="/article/{{ da.tag }}/{{ da.id }}" target="_blank">
-                    <h2 class="post-title">[{{ da.tag }}] {{ da.title }}</h2>
-                    <h3 class="post-subtitle">{{ da.subtitle }}</h3>
-                    <div class="post-content-preview">{{ da.content }}......</div>
+                <a href="/article/{{ article.tag }}/{{ article.id }}" target="_blank">
+                    <h2 class="post-title">[{{ article.tag }}] {{ article.title }}</h2>
+                    <h3 class="post-subtitle">{{ article.subtitle }}</h3>
+                    <div class="post-content-preview">{{ article.content }}......</div>
                 </a>
-                <p class="post-meta" style="margin: 10px 0;">Posted by {{ da.author }} on {{ da.date }}&nbsp;&nbsp;ID:{{
-                    da.id }}&nbsp;&nbsp;Page
-                    View:{{ da.read_count }}</p>
-                <div class="tags"><a href="/tags#{{ da.tag }}">{{ da.tag }}</a></div>
+                <p class="post-meta" style="margin: 10px 0;">Posted by {{ article.author }} on {{ article.create_date }}&nbsp;&nbsp;ID:{{
+                    article.id }}&nbsp;&nbsp;Page
+                    View:{{ article.read_count }}</p>
+                <div class="tags"><a href="/tags#{{ article.tag }}">{{ article.tag }}</a></div>
 
             </div>
             <hr>
@@ -172,14 +172,14 @@
             <ul class="pager" id="pa">
                 {% if page!=1 %}
                 <li class="previous">
-                    <a href="/{{ page-1 }}">&larr; Newer Posts</a>
+                    <a href="/?page={{ page-1 }}">&larr; Newer Posts</a>
                 </li>
                 {% endif %}
 
                 {% if page*10
-                <total_count %}
+                <article_count %}
                 <li class="next">
-                    <a href="/{{ page+1 }}">Older Posts →</a>
+                    <a href="/?page={{ page+1 }}">Older Posts →</a>
                 </li>
                 {% endif %}
             </ul>
@@ -200,18 +200,21 @@
             <section>
                 <h5><a href="javascript:void(0)">FEATURED TAGS</a></h5>
                 <div class="tags">
-                    <a href="javascript:void(0)">Python</a>
-                    <a href="javascript:void(0)">Java</a>
-                    <a href="javascript:void(0)">C++</a>
                     <a href="javascript:void(0)">AI</a>
                     <a href="javascript:void(0)">机器学习</a>
-                    <a href="javascript:void(0)">图像识别</a>
+                    <a href="javascript:void(0)">深度学习</a>
+                    <a href="javascript:void(0)">主动学习</a>
+                    <a href="javascript:void(0)">半监督学习</a>
+                    <a href="javascript:void(0)">CV</a>
                     <a href="javascript:void(0)">数据分析</a>
-                    <a href="javascript:void(0)">机器人</a>
                     <a href="javascript:void(0)">物联网</a>
+                    <a href="javascript:void(0)">机器人</a>
                     <a href="javascript:void(0)">Unity3D</a>
                     <a href="javascript:void(0)">Linux</a>
                     <a href="javascript:void(0)">网络安全</a>
+                    <a href="javascript:void(0)">Python</a>
+                    <a href="javascript:void(0)">Java</a>
+                    <a href="javascript:void(0)">C++</a>
                 </div>
             </section>
             <hr>
@@ -253,7 +256,7 @@
 
             <h5><a href="javascript:void(0);">POPULAR POSTS</a></h5>
             <ul class="list-inline" id="popular">
-                {% for p in popular %}
+                {% for p in popular_articles_lst %}
                 <li><a href="/article/{{ p.tag }}/{{ p.id }}">{{ p.title }} ({{ p.read_count }})</a></li>
                 <br>
                 {% endfor %}
@@ -264,19 +267,19 @@
             <h5><a href="javascript:void(0);">FUNCTIONS</a></h5>
             <ul class="list-inline">
                 <li><a href="/files" target="_blank">文件上传</a></li>
-                <li><a href="/manage">博客管理</a></li>
+                <li><a href="/manage" target="_blank">博客管理</a></li>
                 <li><a href="/article/search" target="_blank">全文检索</a></li>
             </ul>
 
             <ul class="list-inline">
                 <li><a href="/album" target="_blank">相册</a></li>
-                <li><a href="/video">视频监控</a></li>
+                <li><a href="/video" target="_blank">视频监控</a></li>
                 <li><a href="/echarts" target="_blank">图表</a></li>
                 <li><a href="/login">登录</a></li>
             </ul>
 
             <ul class="list-inline">
-                <li><a href="/study">学习</a></li>
+                <li><a href="/study" target="_blank">学习</a></li>
             </ul>
 
             <hr>

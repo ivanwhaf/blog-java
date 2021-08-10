@@ -28,6 +28,7 @@
     td {
         text-align:center;
     }
+
     </style>
 </head>
 
@@ -38,6 +39,7 @@
             background-image: url('/static/photo/list.jpg')
                 /*page*/
         }
+
 
 </style>
 
@@ -70,7 +72,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -89,7 +91,7 @@
                         <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
                     <li>
                         <a href="/tags">Tags</a>
@@ -129,6 +131,7 @@
             }
         }
 
+
 </script>
 
 <!-- Main Content -->
@@ -147,21 +150,23 @@
                 <div class="row" id="row">
                     <!--<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">-->
 
-                    <div class="col-lg-8 col-lg-offset-1
+                    <div class="col-lg-10 col-lg-offset-0
                             col-md-8 col-md-offset-1
                             col-sm-12
                             col-xs-12">
-                        <button type="button" class="btn btn-link" onclick="blog_manage();">博文管理</button>
+                        <button type="button" class="btn btn-link" onclick="blog_manage();">博文管理</button>&emsp;&emsp;
                         {% if session.get('authority')==1 %}
-                        <button type="button" class="btn btn-link" onclick="admin_manage();">管理员管理</button>
-                        <button type="button" class="btn btn-link" onclick="comment_manage();">评论管理</button>
+                        <button type="button" class="btn btn-link" onclick="admin_manage();">管理员管理</button>&emsp;&emsp;
+                        <button type="button" class="btn btn-link" onclick="comment_manage();">评论管理</button>&emsp;&emsp;
                         {% endif %}
-                        <button type="button" class="btn btn-link" onclick="file_manage();">文件管理</button>
+                        <button type="button" class="btn btn-link" onclick="file_manage();">文件管理</button>&emsp;&emsp;
                         &emsp;
                         <button type="button" class="btn btn-info" onclick="logout();">退出登录</button>
                         <br>
                         <div id="blog_manage">
-                            <button type="button" class="btn btn-primary btn-outline" onclick="add_blog();">添 加 博 客</button>
+                            <br>
+                            <button type="button" class="btn btn-primary btn-outline" onclick="add_blog();">添 加 博 客
+                            </button>
                             &emsp;
                             共 {{ articles_count}} 篇博客
                             <br><br>
@@ -194,7 +199,7 @@
                                     </td>
                                     <td width="10%">{{ l.author }}
                                     </td>
-                                    <td width="25%">{{ l.date }}
+                                    <td width="25%">{{ l.create_date }}
                                     </td>
                                     <td width="10%">
                                         <button type="button" id="{{ l.id }}" class="btn btn-danger"
@@ -209,10 +214,11 @@
 
                         {% if session.get('authority')==1 %}
                         <div id="admin_manage" hidden>
+                            <br>
                             <button type="button" class="btn btn-primary btn-outline"
                                     onclick="add_admin();">添加管理员
                             </button> &emsp;
-                            共{{ admin_count }}个管理员<br><br>
+                            共 {{ admin_count }} 个管理员<br><br>
                             <table>
                                 <tr>
                                     <td width="5">id
@@ -234,7 +240,8 @@
                                 <tr>
                                     <td width="5%">{{ l.id }}
                                     </td>
-                                    <td width="16%">{{ l.username }}
+                                    <td width="16%"><a href="/admin/{{l.username}}/edit" target="_blank">{{
+                                        l.username }}</a>
                                     </td>
                                     <td width="16%">{{ l.password }}
                                     </td>
@@ -256,6 +263,7 @@
 
 
                         <div id="comment_manage" hidden>
+                            <br>
                             共{{ comments_count}}条评论<br><br>
                             <table>
                                 <tr>
@@ -280,13 +288,13 @@
                                     </td>
                                     <td width="10%">{{ l.article_id }}
                                     </td>
-                                    <td width="10%">{{ l.replyname }}
+                                    <td width="10%">{{ l.reply_name }}
                                     </td>
                                     <td width="35%">{{ l.content }}
                                     </td>
-                                    <td width="15%">{{ l.date }}
+                                    <td width="15%">{{ l.comment_date }}
                                     </td>
-                                    <td width="15%">{{ l.address }}
+                                    <td width="15%">{{ l.location }}
                                     </td>
                                     <td width="10%">
                                         <button type="button" id="{{ l.id }}-{{ l.article_id }}" class="btn btn-danger"
@@ -574,16 +582,16 @@
         }
 
 
-        function delete_file_public(id) {
+        function delete_file_public(filename) {
             var r = confirm("确认删除么？");
             if (r != true) {
                 return false;
             }
-            id = encodeURIComponent(id);
+            filename = encodeURIComponent(filename);
             $.ajax(
                 {
                     method: 'DELETE',
-                    url: '/api/files/public?name=' + id,
+                    url: '/api/files/public?filename=' + filename,
                     dataType: 'json',
                     success: function (data) {
                         if (data == 1) {
@@ -602,16 +610,16 @@
             );
         }
 
-        function delete_file_private(id) {
+        function delete_file_private(filename) {
             var r = confirm("确认删除么？");
             if (r != true) {
                 return false;
             }
-            id = encodeURIComponent(id);
+            filename = encodeURIComponent(filename);
             $.ajax(
                 {
                     method: 'DELETE',
-                    url: '/api/files/private?name=' + id,
+                    url: '/api/files/private?filename=' + filename,
                     dataType: 'json',
                     success: function (data) {
                         if (data == 1) {
@@ -630,16 +638,16 @@
             );
         }
 
-        function delete_file_album(id) {
+        function delete_file_album(filename) {
             var r = confirm("确认删除么？");
             if (r != true) {
                 return false;
             }
-            id = encodeURIComponent(id);
+            filename = encodeURIComponent(filename);
             $.ajax(
                 {
                     method: 'DELETE',
-                    url: '/api/album?name=' + id,
+                    url: '/api/album?filename=' + filename,
                     dataType: 'json',
                     success: function (data) {
                         if (data == 1) {
@@ -657,6 +665,7 @@
                 }
             );
         }
+
 </script>
 
 <a id="rocket" href="#top" class=""></a>

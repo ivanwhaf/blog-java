@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ tag }}-{{ title }}">
-    <meta name="keywords" content="Python、深度学习、爬虫、数据分析、Unity3D、图像识别">
     <!-- Place this tag in your head or just before your close body tag. -->
 
     <link rel="shortcut icon" href="/static/photo/1.png">
@@ -175,7 +174,7 @@
                         <h1 id="t1">{{ title }}</h1>
                         <h2 id="st1" class="subheading">{{ subtitle }}</h2>
                         <span class="meta" id="d1">
-                                Posted by {{ author }} on {{ date }}
+                                Posted by {{ author }} on {{ create_date }}
                             </span>
                     </div>
 
@@ -196,7 +195,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -217,7 +216,7 @@
                     </li>
 
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
 
                     <li>
@@ -266,22 +265,21 @@
         <div class="row">
             <!-- Post Container -->
             <div class="
-            col-lg-8 col-lg-offset-2
-            col-md-10 col-md-offset-1
+            col-lg-9 col-lg-offset-1
+            col-md-9 col-md-offset-1
             post-container" id="essay">
 
                 <h1 id="t2"></h1>
 
-                <div class="post-content-preview" id="post-content-preview">浏览量：{{ read_count }}
+                <div class="post-content-preview" id="post-content-preview">&emsp;&nbsp;浏览量：{{ read_count }}
                     &emsp;最近编辑于：{{ last_edit_date }}
                 </div>
                 <br>
 
-                <div style="display:none;" id="c">{{ content | safe }}</div>
+                <div style="display:none;" id="c">{{ content_md | safe }}</div>
 
-                <div id="content-editormd">
-                        <textarea style="display:none;">
-                        </textarea>
+                <div id="content-editormd" style="font-size:16px">
+
                 </div>
 
                 <br>
@@ -326,6 +324,7 @@
             <!-- Sidebar Container -->
             <aside id="sidebar">
                 <div id="toc" class="toc-article">
+                    <br><br><br>
                     <strong class="toc-title">Contents</strong>
 
 
@@ -506,6 +505,8 @@
 <script>
         var c = $("#c").text(); //must be text() not html()
         testEditor = editormd.markdownToHTML("content-editormd", {
+            //width: "100%",
+            //height: 740,
             markdown: c,
             htmlDecode: "style,script,iframe",
             tocm: true,
@@ -536,6 +537,7 @@
         var comments = {{ comments | safe }};
 
         $(".comment-list").addCommentList({ data: comments, add: "" });
+
         $("#comment").click(function () {
             content = $("#content").val();
             email = $("#email").val();

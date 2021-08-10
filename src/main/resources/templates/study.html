@@ -64,7 +64,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -79,7 +79,7 @@
                     </li>
 
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
 
                     <li>
@@ -165,13 +165,16 @@
                     ">
             <div class="form-group">
                 <div class="col-md-18">
+                    <br>
                     <input class="form-control" id="add_key" name="key" onkeydown="enter2();"
                            placeholder="请输入要增加的单词" style="height:55px;font-size:18px;" type="text">
                 </div>
+                <br>
                 <div class="col-md-18">
                     <input class="form-control" id="add_value" name="key" onkeydown="enter2();"
                            placeholder="请输入要增加的单词意思" style="height:55px;font-size:18px;" type="text">
                 </div>
+                <br>
                 <div class="col-md-13">
                     <input class="btn btn-primary" id="add_button" onclick="add();" style="width:120px"
                            type="button" value="Add">
@@ -280,8 +283,8 @@
                     else{
                         for (var i = 0; i < words.length; i++) {
                             id = words[i].id;
-                            key = words[i].key_;
-                            value = words[i].value_;
+                            key = words[i].key;
+                            value = words[i].value;
                             $("#word").append(key+': '+value+'<br>');
                         }
                     }
@@ -330,8 +333,8 @@
                         words=words.slice(0,5);
                         for (var i = 0; i < words.length; i++) {
                             id = words[i].id;
-                            key = words[i].key_;
-                            value = words[i].value_;
+                            key = words[i].key;
+                            value = words[i].value.substring(0,20);
                             $("#word_list").append('<option value='+key+' label='+value+'></option>');
                         }
                     }
@@ -355,7 +358,7 @@
                 alert('请填写完整！');
                 return false;
             }
-            if(value.length>30){
+            if(value.length>=200){
                 alert('单词过长！');
                 return false;
             }
@@ -363,6 +366,8 @@
             var form = new FormData();
             form.append("key", key);
             form.append("value", value);
+            form.append("key_type",'en');
+            form.append("value_type", 'zh');
             $.ajax({
                 url: "/api/study/dictionary",
                 type: "post",
@@ -375,6 +380,10 @@
                     if (data=='0'){
                         alert('单词添加失败，请重试！');
                         return;
+                    }
+                    else if (data=='-1'){
+                        alert('您尚未登录请先登录！');
+                        window.location.href = "/login";
                     }
                     else{
                         alert('单词添加成功！');

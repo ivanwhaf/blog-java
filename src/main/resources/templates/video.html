@@ -12,7 +12,6 @@
 <button id="close" onclick="close_video()">关闭</button>
 <script src="/static/js/jquery.min.js"></script>
 <script>
-
 		function close_video() {
 			$.ajax(
 				{
@@ -20,7 +19,7 @@
 					url: '/api/video/private/status?option=close',
 					success: function (data) {
 						if (data == 0) {
-							alert("关闭失败！");
+							alert("关闭视频失败！");
 						}
 					}
 				}
@@ -34,13 +33,12 @@
 					url: '/api/video/private/status?option=open',
 					success: function (data) {
 						if (data == 0) {
-							alert("打开失败！");
+							alert("打开视频失败！");
 						}
 					}
 				}
 			);
 		}
-
 </script>
 </body>
 

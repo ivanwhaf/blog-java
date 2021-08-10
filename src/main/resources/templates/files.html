@@ -105,7 +105,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -123,7 +123,7 @@
                         <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
                     <li>
                         <a href="/tags">Tags</a>
@@ -381,16 +381,16 @@
             }
         }
 
-        function delete_file_public(id) {
+        function delete_file_public(filename) {
             var r = confirm("确认删除么？");
             if (r != true) {
                 return false;
             }
-            id = encodeURIComponent(id);
+            filename = encodeURIComponent(filename);
             $.ajax(
                 {
                     method: 'DELETE',
-                    url: '/api/files/public?name=' + id,
+                    url: '/api/files/public?filename=' + filename,
                     dataType: 'json',
                     success: function (data) {
                         if (data == 1) {
@@ -410,16 +410,16 @@
         }
 
 
-        function delete_file_private(id) {
+        function delete_file_private(filename) {
             var r = confirm("确认删除么？");
             if (r != true) {
                 return false;
             }
-            id = encodeURIComponent(id);
+            filename = encodeURIComponent(filename);
             $.ajax(
                 {
                     method: 'DELETE',
-                    url: '/api/files/private?name=' + id,
+                    url: '/api/files/private?filename=' + filename,
                     dataType: 'json',
                     success: function (data) {
                         if (data == 1) {
@@ -438,16 +438,16 @@
             );
         }
 
-        function delete_file_album(id) {
+        function delete_file_album(filename) {
             var r = confirm("确认删除么？");
             if (r != true) {
                 return false;
             }
-            id = encodeURIComponent(id);
+            filename = encodeURIComponent(filename);
             $.ajax(
                 {
                     method: 'DELETE',
-                    url: '/api/album?name=' + id,
+                    url: '/api/album?filename=' + filename,
                     dataType: 'json',
                     success: function (data) {
                         if (data == 1) {
@@ -473,7 +473,7 @@
             }
             r = Math.random().toString(36).slice(-3);
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "/api/files/all/" + r, true);
+            xhr.open("GET", "/api/files/public/all/" + r, true);
             xhr.responseType = "blob";
             xhr.onload = function () {
                 if (this.status == 200) {

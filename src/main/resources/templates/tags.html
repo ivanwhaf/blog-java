@@ -64,7 +64,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -82,7 +82,7 @@
                         <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
                     <li>
                         <a href="/tags">Tags</a>
@@ -128,20 +128,20 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="ta">
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
-                {% for key in rdic %}
-                <a href="#{{ key }}">{{ key }}</a>
+                {% for tag in rdic %}
+                <a href="#{{ key }}">{{ tag }}</a>
                 {% endfor %}
             </div>
 
-            {% for key in rdic %}
+            {% for tag in rdic %}
             <div class="one-tag-list" id="{{key}}">
                     <span class="fa fa-tag listing-seperator">
-                        <span class="tag-text">{{ key }}</span>
+                        <span class="tag-text">{{ tag }}</span>
                     </span>
-                {% for tag in rdic[key] %}
+                {% for article in rdic[tag] %}
                 <div class="post-preview">
-                    <a href="/article/{{key}}/{{tag.id}}">
-                        <h2 class="post-title">[{{ key }}] {{ tag.title }}</h2>
+                    <a href="/article/{{tag}}/{{article.id}}">
+                        <h2 class="post-title">[{{ tag }}] {{ article.title }}</h2>
                     </a>
                 </div>
                 <hr>

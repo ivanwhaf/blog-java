@@ -9,4 +9,9 @@ public class FilesController {
     public String files(){
         return "files";
     }
+
+    @RequestMapping("/album")
+    public String album(){
+        return "album";
+    }
 }

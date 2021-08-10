@@ -28,15 +28,15 @@
 		</div>
 		 * */
 		
-		if(typeof(obj.date) == "undefined" || obj.date == ""){
-			obj.date = getNowDateFormat();
+		if(typeof(obj.comment_date) == "undefined" || obj.comment_date == ""){
+			obj.comment_date = getNowDateFormat();
 		}
 		
-		var el = "<div class='comment-info'><header><img src='"+obj.img+"'></header><div class='comment-right'><h3>"+obj.reply_name+"</h3>"
-				+"<div class='comment-content-header'><span>"+obj.date+"</span>";
+		var el = "<div class='comment-info'><header><img src='"+obj.avatar+"'></header><div class='comment-right'><h3>"+obj.reply_name+"</h3>"
+				+"<div class='comment-content-header'><span>"+obj.comment_date+"</span>";
 		
-		if(typeof(obj.address) != "undefined" && obj.address != ""){
-			el =el+"<span hidden>"+obj.address+"</span>";
+		if(typeof(obj.location) != "undefined" && obj.location != ""){
+			el =el+"<span hidden>"+obj.location+"</span>";
 		}
 		el = el+"</div><p class='content'>"+obj.content+"</p><div class='comment-content-footer'><div class='row'><div class='col-md-10'>";
 		

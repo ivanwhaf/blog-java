@@ -65,7 +65,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ivan</a>
+            <a class="navbar-brand" href="/">Ivan's Blog</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -85,7 +85,7 @@
                     </li>
 
                     <li>
-                        <a href="/archive">Archives</a>
+                        <a href="/archives">Archives</a>
                     </li>
 
                     <li>
@@ -127,13 +127,12 @@
             }
         }
 
-
 </script>
 
 <div class="fh5co-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-11 col-md-8 col-sm-8 col-xs-12">
+            <div class="col-lg-10 col-lg-offset-1 col-md-8 col-sm-8 col-xs-12">
                 <div class="col-md-25">
                     <br>
 
@@ -142,7 +141,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <input type="text" name="username" id="username" class="form-control"
-                                           placeholder="用户名" style="height:40px;font-size:18px;">
+                                           placeholder="用户名（最大长度30）" style="height:40px;font-size:18px;">
                                 </div>
                             </div>
                         </div>
@@ -151,7 +150,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <input type="text" name="password" id="password" class="form-control"
-                                           placeholder="密码" style="height:40px;font-size:18px;">
+                                           placeholder="密码（最大长度30）" style="height:40px;font-size:18px;">
                                 </div>
                             </div>
                         </div>
@@ -160,7 +159,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <input type="text" name="nickname" id="nickname" class="form-control"
-                                           placeholder="昵称" style="height:40px;font-size:18px;">
+                                           placeholder="昵称（最大长度30）" style="height:40px;font-size:18px;">
                                 </div>
                             </div>
                         </div>
@@ -168,8 +167,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <select style="height:30px;width:150px" id="select_sex"
-                                            onchange="sex_option_change();">
+                                    <select style="height:30px;width:150px" id="select_sex" onchange="sex_option_change();">
                                         <option>男</option>
                                         <option>女</option>
                                     </select>
@@ -182,13 +180,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <select style="height:30px;width:150px" id="select" onchange="aut_option_change();">
+                                    <select style="height:30px;width:150px" id="select_authority" onchange="authority_option_change();">
                                         <option>1（最高等级）</option>
                                         <option>2（普通管理员）</option>
                                         <option>3（普通用户）</option>
                                     </select>
                                     <input type="text" name="authority" readonly id="authority" class="form-control"
-                                           placeholder="权限等级（1为最高等级，2为普通管理员，3为用户）" style="height:40px;font-size:18px;">
+                                           placeholder="权限等级（1为最高等级，2为普通管理员，3为普通用户）" style="height:40px;font-size:18px;">
                                 </div>
                             </div>
                         </div>
@@ -275,16 +273,35 @@
 <script src="/static/js/hux-blog.min.js"></script>
 
 <script>
+
+        var select = document.getElementById('select_authority');
+        var options = select.options;
+        var authority = document.getElementById("authority");
+        authority.value = select.options[0].text.substring(0, 1);
+
+        var select = document.getElementById('select_sex');
+        var options = select.options;
+        var sex = document.getElementById("sex");
+        sex.value = select.options[0].text;
+
+
         function add_admin() {
-            if ($("#username").val() == "" || $("#password").val() == "" || $("#nickname").val() == "" || $("#authority").val() == "") {
-                alert("请填写完整信息!");
-                return false;
-            }
+            id = $("#id").val();
             username = $("#username").val();
             password = $("#password").val();
             nickname = $("#nickname").val();
             sex = $("#sex").val();
             authority = $("#authority").val();
+
+            if (username == "" || password == "" || nickname == "") {
+                alert("请填写完整信息!");
+                return false;
+            }
+            if (password.length<6){
+                alert("密码长度过短!");
+                return false;
+            }
+
             //content=encodeURI($("#content").val());
             //var form = new FormData($("#form")[0]);
             var form = new FormData();
@@ -319,27 +336,9 @@
                 }
             })
         }
-        var select = document.getElementById('select');
-        var options = select.options;
-        var authority = document.getElementById("authority");
-        authority.value = select.options[0].text.substring(0, 1);
-
-        var select = document.getElementById('select_sex');
-        var options = select.options;
-        var sex = document.getElementById("sex");
-        sex.value = select.options[0].text;
-
-        function aut_option_change() {
-            var s = document.getElementById("select");
-            var options = s.options;
-            var i = s.selectedIndex;
-            var v = s.options[i].text.substring(0, 1);
-            document.getElementById("authority").value = v;
-            $("#authority").attr("readonly", "readonly");
-        }
 
         function sex_option_change() {
-            var s = document.getElementBysId("select_sex");
+            var s = document.getElementById("select_sex");
             var options = s.options;
             var i = s.selectedIndex;
             var v = s.options[i].text;
@@ -347,6 +346,14 @@
             $("#sex").attr("readonly", "readonly");
         }
 
+        function authority_option_change() {
+            var s = document.getElementById("select_authority");
+            var options = s.options;
+            var i = s.selectedIndex;
+            var v = s.options[i].text.substring(0, 1);
+            document.getElementById("authority").value = v;
+            $("#authority").attr("readonly", "readonly");
+        }
 
 </script>
 

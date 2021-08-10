@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BlogController {
     @RequestMapping("/")
     public String index() {
-        return "index";
-    }
 
-    @RequestMapping("/id")
-    public String indexId() {
         return "index";
     }
 
@@ -20,9 +16,9 @@ public class BlogController {
         return "about";
     }
 
-    @RequestMapping("/archive")
+    @RequestMapping("/archives")
     public String archive() {
-        return "archive";
+        return "archives";
     }
 
     @RequestMapping("/tags")
@@ -30,14 +26,16 @@ public class BlogController {
         return "tags";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/article/add")
     public String add() {
-        return "add";
+        return "add_article";
     }
-    @RequestMapping("/edit")
+
+    @RequestMapping("/article/<tag>/<id>/edit")
     public String edit() {
-        return "edit";
+        return "edit_article";
     }
+
     @RequestMapping("/search")
     public String search() {
         return "search";
