@@ -4,51 +4,54 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/static/photo/1.png" type="image/png"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="/static/photo/1.png" rel="icon" type="image/png"/>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="/static/js/buttons.js"></script>
     <title>
         Admin - Ivan | Blog
     </title>
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/beantech.min.css">
+    <link href="/static/css/beantech.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/css/donate.css">
+    <link href="/static/css/donate.css" rel="stylesheet">
 
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/static/css/rocket.css">
+    <link href="/static/css/rocket.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <style>
-    .img_div {
-    margin: 0px 400px 0px 250px;
-    position: relative;
-    width: 150px;
-    height: 150px;
-    }
-    .mask {
-    position: absolute;
-    background: rgba(101, 101, 101, 0.6);
-    top: 0;
-    left: 0;
-    width: 150px;
-    height: 150px;
-    color: #ffffff;
-    opacity: 0;
-    }
-    .img_div:hover .mask {
-    opacity: 1;           
-    }
-    .mask h3 {
-        text-align: center;
-    }
+        .img_div {
+            margin: 0px 400px 0px 250px;
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .mask {
+            position: absolute;
+            background: rgba(101, 101, 101, 0.6);
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            color: #ffffff;
+            opacity: 0;
+        }
+
+        .img_div:hover .mask {
+            opacity: 1;
+        }
+
+        .mask h3 {
+            text-align: center;
+        }
 
     </style>
 </head>
@@ -56,10 +59,10 @@
 <body ontouchstart="">
 <!-- Post Header -->
 <style type="text/css">
-        header.intro-header {
-            background-image: url('/static/photo/about.jpg')
-                /*page*/
-        }
+    header.intro-header {
+        background-image: url('/static/photo/about.jpg')
+        /*page*/
+    }
 </style>
 
 <header class="intro-header">
@@ -85,7 +88,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
+            <button class="navbar-toggle" type="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -105,7 +108,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if session.get('nickname') %}
                     <li>
-                        <a href="/admin/{{ session.get('username') }}" title="个人主页" id="nickname_top">{{ session.get('nickname') }}</a>
+                        <a href="/admin/{{ session.get('username') }}" id="nickname_top" title="个人主页">{{
+                            session.get('nickname') }}</a>
                     </li>
                     {% endif %}
                     <li>
@@ -132,33 +136,32 @@
     <!-- /.container -->
 </nav>
 <script>
-        // Drop Bootstarp low-performance Navbar
-        // Use customize navbar with high-quality material design animation
-        // in high-perf jank-free CSS3 implementation
-        var $body = document.body;
-        var $toggle = document.querySelector('.navbar-toggle');
-        var $navbar = document.querySelector('#huxblog_navbar');
-        var $collapse = document.querySelector('.navbar-collapse');
-        $toggle.addEventListener('click', handleMagic)
-        function handleMagic(e) {
-            if ($navbar.className.indexOf('in') > 0) {
-                // CLOSE
-                $navbar.className = " ";
-                // wait until animation end.
-                setTimeout(function () {
-                    // prevent frequently toggle
-                    if ($navbar.className.indexOf('in') < 0) {
-                        $collapse.style.height = "0px"
-                    }
-                }, 400)
-            } else {
-                // OPEN
-                $collapse.style.height = "auto"
-                $navbar.className += " in";
-            }
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+    $toggle.addEventListener('click', handleMagic)
+
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function () {
+                // prevent frequently toggle
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
         }
-
-
+    }
 </script>
 
 <!-- Main Content -->
@@ -172,7 +175,7 @@
             <div class="img_div">
                 <input id="avatar_name" style="display:none" value="{{ avatar }}">
                 <img id="avatar" src="/admin/avatar/{{ avatar }}/{{ random }}">
-                <input style="display:none;" name="file" type="file" id="img">
+                <input id="img" name="file" style="display:none;" type="file">
                 <a href="javascript:void(0);" onclick="img_click();">
                     <div class="mask">
                         <h3>修改我的头像</h3>
@@ -189,7 +192,7 @@
 
             <div>
                 昵称：<span id="nickname">{{ nickname }}</span>
-                <input id="edit_nickname" value="{{ nickname }}" style="display:none;">
+                <input id="edit_nickname" style="display:none;" value="{{ nickname }}">
                 &emsp;&emsp;<a href="javascript:void(0);" id="edit_nickname_btn" onclick="edit_nickname();">修改</a>
                 <div id="edit_nickname_btns" style="display:none;"><br>&emsp;&emsp;&emsp;
                     <button onclick="confirm_nickname();">确认</button>&emsp;&emsp;<button onclick="cancel_nickname();">
@@ -204,11 +207,11 @@
                 性别：<span id="sex">{{ sex }}</span>
                 <span id="edit_sex" style="display:none">
                         {% if sex =='男' %}
-                            <input name="sex" id="sex_m" type="radio" value="男" checked="checked">男
-                            <input name="sex" id="sex_f" type="radio" value="女">女
+                            <input checked="checked" id="sex_m" name="sex" type="radio" value="男">男
+                            <input id="sex_f" name="sex" type="radio" value="女">女
                         {% else %}
-                            <input name="sex" id="sex_m" type="radio" value="男">男
-                            <input name="sex" id="sex_f" type="radio" value="女" checked="checked">女
+                            <input id="sex_m" name="sex" type="radio" value="男">男
+                            <input checked="checked" id="sex_f" name="sex" type="radio" value="女">女
                         {% endif %}
                     </span>
                 &emsp;&emsp;<a href="javascript:void(0);" id="edit_sex_btn" onclick="edit_sex();">修改</a>
@@ -221,7 +224,7 @@
 
             <div>
                 密码：<span id="password">********</span>
-                <input id="edit_password" value="{{ password }}" style="display:none;">
+                <input id="edit_password" style="display:none;" value="{{ password }}">
                 &emsp;&emsp;<a href="javascript:void(0);" id="edit_password_btn" onclick="edit_password();">修改</a>
                 <div id="edit_password_btns" style="display:none;"><br>&emsp;&emsp;&emsp;
                     <button onclick="confirm_password();">确认</button>&emsp;&emsp;<button onclick="cancel_password();">
@@ -266,7 +269,7 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://github.com/ivanwhaf">
+                        <a href="https://github.com/ivanwhaf" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -283,9 +286,10 @@
                             <i class="fa fa-heart"></i>
                         </span>
                     re-Ported by <a href="http://www.ivana.work">Ivan</a> |
-                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
-                            width="100px" height="20px"
-                            src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true">
+                    <iframe frameborder="0" height="20px" scrolling="0"
+                            src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true"
+                            style="margin-left: 2px; margin-bottom:-5px;"
+                            width="100px">
                     </iframe>
                     <br>
                     苏ICP备19029983号
@@ -306,221 +310,224 @@
 
 <!-- async load function -->
 <script>
-        function async(u, c) {
-            var d = document, t = 'script',
-                o = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-            o.src = u;
-            if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-            s.parentNode.insertBefore(o, s);
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
         }
+        s.parentNode.insertBefore(o, s);
+    }
 
 
 </script>
 
 <!--fastClick.js -->
 <script>
-        async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
-            var $nav = document.querySelector("nav");
-            if ($nav) FastClick.attach($nav);
-        })
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
 </script>
 
 <script>
-        function img_click(){
-            document.getElementById("img").click();
-        }
+    function img_click() {
+        document.getElementById("img").click();
+    }
 
-        function edit_nickname(){
-            $("#nickname").hide();
-            $("#edit_nickname_btn").hide();
-            $("#edit_nickname").show();
-            $("#edit_nickname_btns").show();
-        }
-        function edit_sex(){
-            $("#sex").hide();
-            $("#edit_sex_btn").hide();
-            $("#edit_sex").show();
-            $("#edit_sex_btns").show();
-        }
-        function edit_password(){
-            $("#password").hide();
-            $("#edit_password_btn").hide();
-            $("#edit_password").show();
-            $("#edit_password_btns").show();
-        }
+    function edit_nickname() {
+        $("#nickname").hide();
+        $("#edit_nickname_btn").hide();
+        $("#edit_nickname").show();
+        $("#edit_nickname_btns").show();
+    }
 
-        function confirm_nickname(){
-            var username = $("#username").text();
-            var nickname = $("#edit_nickname").val();
-            if(nickname==""){
-                alert("不能为空!");
-                return;
+    function edit_sex() {
+        $("#sex").hide();
+        $("#edit_sex_btn").hide();
+        $("#edit_sex").show();
+        $("#edit_sex_btns").show();
+    }
+
+    function edit_password() {
+        $("#password").hide();
+        $("#edit_password_btn").hide();
+        $("#edit_password").show();
+        $("#edit_password_btns").show();
+    }
+
+    function confirm_nickname() {
+        var username = $("#username").text();
+        var nickname = $("#edit_nickname").val();
+        if (nickname == "") {
+            alert("不能为空!");
+            return;
+        }
+        var form = new FormData();
+        form.append("username", username);
+        form.append("field", "nickname");
+        form.append("nickname", nickname);
+        $.ajax({
+            url: "/api/admin",
+            type: "put",
+            data: form,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            async: true,
+            success: function (data) {
+                if (data == 1) {
+                    alert('昵称修改成功!');
+                    $("#nickname").text(nickname);
+                    $("#nickname_top").text(nickname);
+                    $("#edit_nickname").val(nickname);
+                } else if (data == 0) {
+                    alert('昵称修改失败!');
+                }
+                $("#edit_nickname").hide();
+                $("#edit_nickname_btns").hide();
+                $("#nickname").show();
+                $("#edit_nickname_btn").show();
             }
-            var form = new FormData();
-            form.append("username", username);
-            form.append("field", "nickname");
-            form.append("nickname", nickname);
-            $.ajax({
-                url: "/api/admin",
-                type: "put",
-                data: form,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                async: true,
-                success: function (data) {
-                    if (data == 1) {
-                        alert('昵称修改成功!');
-                        $("#nickname").text(nickname);
-                        $("#nickname_top").text(nickname);
-                        $("#edit_nickname").val(nickname);
-                    }
-                    else if (data == 0) {
-                        alert('昵称修改失败!');
-                    }
-                    $("#edit_nickname").hide();
-                    $("#edit_nickname_btns").hide();
-                    $("#nickname").show();
-                    $("#edit_nickname_btn").show();
-                }
-            });
-        }
+        });
+    }
 
-        function confirm_sex(){
-            var username = $("#username").text();
-            var sex = $("input[name='sex']:checked").val();
-            var form = new FormData();
-            form.append("username", username);
-            form.append("field", "sex");
-            form.append("sex", sex);
-            $.ajax({
-                url: "/api/admin",
-                type: "put",
-                data: form,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                async: true,
-                success: function (data) {
-                    if (data == 1) {
-                        alert('性别修改成功!');
-                        $("#sex").text(sex);
-                        if(sex=="男"){
-                            $("#sex_m").attr("checked","checked");
-                        }
-                        else if(sex=="女"){
-                            $("#sex_f").attr("checked","checked");
-                        }
+    function confirm_sex() {
+        var username = $("#username").text();
+        var sex = $("input[name='sex']:checked").val();
+        var form = new FormData();
+        form.append("username", username);
+        form.append("field", "sex");
+        form.append("sex", sex);
+        $.ajax({
+            url: "/api/admin",
+            type: "put",
+            data: form,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            async: true,
+            success: function (data) {
+                if (data == 1) {
+                    alert('性别修改成功!');
+                    $("#sex").text(sex);
+                    if (sex == "男") {
+                        $("#sex_m").attr("checked", "checked");
+                    } else if (sex == "女") {
+                        $("#sex_f").attr("checked", "checked");
                     }
-                    else if (data == 0) {
-                        alert('性别修改失败!');
-                    }
-                    $("#edit_sex").hide();
-                    $("#edit_sex_btns").hide();
-                    $("#sex").show();
-                    $("#edit_sex_btn").show();
+                } else if (data == 0) {
+                    alert('性别修改失败!');
                 }
-            });
-        }
-
-        function confirm_password(){
-            var username = $("#username").text();
-            var password = $("#edit_password").val();
-            if(password==""){
-                alert("不能为空!");
-                return;
+                $("#edit_sex").hide();
+                $("#edit_sex_btns").hide();
+                $("#sex").show();
+                $("#edit_sex_btn").show();
             }
-            var form = new FormData();
-            form.append("username", username);
-            form.append("field", "password");
-            form.append("password", password);
-            $.ajax({
-                url: "/api/admin",
-                type: "put",
-                data: form,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                async: true,
-                success: function (data) {
-                    if (data == 1) {
-                        alert('密码修改成功!'); 
-                        //$("#password").text(password);
-                        $("#edit_password").val(password);
-                    }
-                    else if (data == 0) {
-                        alert('密码修改失败!');
-                    }
-                    
-                    $("#edit_password").hide();
-                    $("#edit_password_btns").hide();
-                    $("#password").show();
-                    $("#edit_password_btn").show();
-                }
-            });
-        }
+        });
+    }
 
-        function cancel_nickname(){
-            $("#edit_nickname").hide();
-            $("#edit_nickname_btns").hide();
-            $("#nickname").show();
-            $("#edit_nickname_btn").show();
+    function confirm_password() {
+        var username = $("#username").text();
+        var password = $("#edit_password").val();
+        if (password == "") {
+            alert("不能为空!");
+            return;
         }
-        function cancel_sex(){
-            $("#edit_sex").hide();
-            $("#edit_sex_btns").hide();
-            $("#sex").show();
-            $("#edit_sex_btn").show();
-        }
-        function cancel_password(){
-            $("#edit_password").hide();
-            $("#edit_password_btns").hide();
-            $("#password").show();
-            $("#edit_password_btn").show();
-        }
-
-        $('input[type="file"]').on('change',upload_avatar);
-        function upload_avatar(){
-            var form = new FormData();
-            var avatar_name=$("#avatar_name").val();
-            form.append("file", this.files[0]);
-            $.ajax({
-                url: "/api/admin/avatar",
-                type: "post",
-                data: form,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                async: true,
-                success: function (data) {
-                    if (data == 1) {
-                        alert('头像修改成功！');
-                        window.location.reload();
-                    }
-                    else if (data == 0) {
-                        alert('头像修改失败！');
-                    }
-                    else{
-                        alert('您尚未登录！');
-                        window.location.href = "/login";
-                    }
-                    var avatar=$("#avatar")[0].src;
-                    var r = Math.random().toString(36).slice(-3);
-                    var s=avatar.split("/");
-                    s[s.length-2]=avatar_name;
-                    s[s.length-1]=r;
-                    avatar=s.join("/");
-                    $("#avatar").attr('src',avatar);
-                    //window.location.href = "/user/{{ username }}";
+        var form = new FormData();
+        form.append("username", username);
+        form.append("field", "password");
+        form.append("password", password);
+        $.ajax({
+            url: "/api/admin",
+            type: "put",
+            data: form,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            async: true,
+            success: function (data) {
+                if (data == 1) {
+                    alert('密码修改成功!');
+                    //$("#password").text(password);
+                    $("#edit_password").val(password);
+                } else if (data == 0) {
+                    alert('密码修改失败!');
                 }
-            });
-        }
+
+                $("#edit_password").hide();
+                $("#edit_password_btns").hide();
+                $("#password").show();
+                $("#edit_password_btn").show();
+            }
+        });
+    }
+
+    function cancel_nickname() {
+        $("#edit_nickname").hide();
+        $("#edit_nickname_btns").hide();
+        $("#nickname").show();
+        $("#edit_nickname_btn").show();
+    }
+
+    function cancel_sex() {
+        $("#edit_sex").hide();
+        $("#edit_sex_btns").hide();
+        $("#sex").show();
+        $("#edit_sex_btn").show();
+    }
+
+    function cancel_password() {
+        $("#edit_password").hide();
+        $("#edit_password_btns").hide();
+        $("#password").show();
+        $("#edit_password_btn").show();
+    }
+
+    $('input[type="file"]').on('change', upload_avatar);
+
+    function upload_avatar() {
+        var form = new FormData();
+        var avatar_name = $("#avatar_name").val();
+        form.append("file", this.files[0]);
+        $.ajax({
+            url: "/api/admin/avatar",
+            type: "post",
+            data: form,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            async: true,
+            success: function (data) {
+                if (data == 1) {
+                    alert('头像修改成功！');
+                    window.location.reload();
+                } else if (data == 0) {
+                    alert('头像修改失败！');
+                } else {
+                    alert('您尚未登录！');
+                    window.location.href = "/login";
+                }
+                var avatar = $("#avatar")[0].src;
+                var r = Math.random().toString(36).slice(-3);
+                var s = avatar.split("/");
+                s[s.length - 2] = avatar_name;
+                s[s.length - 1] = r;
+                avatar = s.join("/");
+                $("#avatar").attr('src', avatar);
+                //window.location.href = "/user/{{ username }}";
+            }
+        });
+    }
 
 
 </script>
-<a id="rocket" href="#top" class=""></a>
-<script type="text/javascript" src="/static/js/totop.js?v=1.0.0" async=""></script>
+<a class="" href="#top" id="rocket"></a>
+<script async="" src="/static/js/totop.js?v=1.0.0" type="text/javascript"></script>
 </body>
 
 </html>

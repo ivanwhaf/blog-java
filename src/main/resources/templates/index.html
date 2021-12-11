@@ -50,6 +50,12 @@
             background-image: url('/static/photo/home5.jpg')
         }
 
+
+
+
+
+
+
 </style>
 
 <header class="intro-header">
@@ -113,33 +119,32 @@
 </nav>
 
 <script>
-        // Drop Bootstarp low-performance Navbar
-        // Use customize navbar with high-quality material design animation
-        // in high-perf jank-free CSS3 implementation
-        var $body = document.body;
-        var $toggle = document.querySelector('.navbar-toggle');
-        var $navbar = document.querySelector('#huxblog_navbar');
-        var $collapse = document.querySelector('.navbar-collapse');
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-        $toggle.addEventListener('click', handleMagic)
-        function handleMagic(e) {
-            if ($navbar.className.indexOf('in') > 0) {
-                // CLOSE
-                $navbar.className = " ";
-                // wait until animation end.
-                setTimeout(function () {
-                    // prevent frequently toggle
-                    if ($navbar.className.indexOf('in') < 0) {
-                        $collapse.style.height = "0px"
-                    }
-                }, 400)
-            } else {
-                // OPEN
-                $collapse.style.height = "auto"
-                $navbar.className += " in";
-            }
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function () {
+                // prevent frequently toggle
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
         }
-
+    }
 </script>
 
 <!-- Main Content -->
@@ -161,10 +166,8 @@
                     <div class="post-content-preview">{{ article.content }}......</div>
                 </a>
                 <p class="post-meta" style="margin: 10px 0;">Posted by {{ article.author }} on {{ article.create_date }}&nbsp;&nbsp;ID:{{
-                    article.id }}&nbsp;&nbsp;Page
-                    View:{{ article.read_count }}</p>
+                    article.id }}&nbsp;&nbsp;Page View:{{ article.read_count }}</p>
                 <div class="tags"><a href="/tags#{{ article.tag }}">{{ article.tag }}</a></div>
-
             </div>
             <hr>
             {% endfor %}
@@ -177,7 +180,7 @@
                 {% endif %}
 
                 {% if page*10
-                <article_count %}
+                <articles_count %}
                 <li class="next">
                     <a href="/?page={{ page+1 }}">Older Posts →</a>
                 </li>
@@ -256,8 +259,8 @@
 
             <h5><a href="javascript:void(0);">POPULAR POSTS</a></h5>
             <ul class="list-inline" id="popular">
-                {% for p in popular_articles_lst %}
-                <li><a href="/article/{{ p.tag }}/{{ p.id }}">{{ p.title }} ({{ p.read_count }})</a></li>
+                {% for pa in popular_articles_lst %}
+                <li><a href="/article/{{ pa.tag }}/{{ pa.id }}">{{ pa.title }} ({{ pa.read_count }})</a></li>
                 <br>
                 {% endfor %}
             </ul>
@@ -283,7 +286,7 @@
             </ul>
 
             <hr>
-            主页浏览量：{{ visitor_count }}
+            主页浏览量：{{ visitors_count }}
             <br>
         </div>
     </div>

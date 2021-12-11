@@ -40,7 +40,6 @@
                 /*page*/
         }
 
-
 </style>
 
 <header class="intro-header">
@@ -131,7 +130,6 @@
             }
         }
 
-
 </script>
 
 <!-- Main Content -->
@@ -168,7 +166,7 @@
                             <button type="button" class="btn btn-primary btn-outline" onclick="add_blog();">添 加 博 客
                             </button>
                             &emsp;
-                            共 {{ articles_count}} 篇博客
+                            共 {{ articles_count }} 篇博客
                             <br><br>
                             <table id="list">
                                 <tr>
@@ -185,24 +183,24 @@
                                     <td width="10%">操作
                                     </td>
                                 </tr>
-                                {% for l in articles_lst %}
+                                {% for article in articles_lst %}
                                 <tr>
-                                    <td width="5%">{{ l.id }}
+                                    <td width="5%">{{ article.id }}
                                     </td>
                                     <td width="35%">
-                                        <a href="/article/{{ l.tag }}/{{ l.id }}/edit" target="_blank"
+                                        <a href="/article/{{ article.tag }}/{{ article.id }}/edit" target="_blank"
                                            style="color: #0085a1">
-                                            <span>{{ l.title }}</span>
+                                            <span>{{ article.title }}</span>
                                         </a>
                                     </td>
-                                    <td width="15%">{{ l.tag }}
+                                    <td width="15%">{{ article.tag }}
                                     </td>
-                                    <td width="10%">{{ l.author }}
+                                    <td width="10%">{{ article.author }}
                                     </td>
-                                    <td width="25%">{{ l.create_date }}
+                                    <td width="25%">{{ article.create_date }}
                                     </td>
                                     <td width="10%">
-                                        <button type="button" id="{{ l.id }}" class="btn btn-danger"
+                                        <button type="button" id="{{ article.id }}" class="btn btn-danger"
                                                 onclick="delete_article(this.id);">删除
                                         </button>
                                     </td>
@@ -236,23 +234,23 @@
                                     <td width="10">操作
                                     </td>
                                 </tr>
-                                {% for l in admin_lst %}
+                                {% for admin in admin_lst %}
                                 <tr>
-                                    <td width="5%">{{ l.id }}
+                                    <td width="5%">{{ admin.id }}
                                     </td>
-                                    <td width="16%"><a href="/admin/{{l.username}}/edit" target="_blank">{{
-                                        l.username }}</a>
+                                    <td width="16%"><a href="/admin/{{admin.username}}/edit" target="_blank">{{
+                                        admin.username }}</a>
                                     </td>
-                                    <td width="16%">{{ l.password }}
+                                    <td width="16%">{{ admin.password }}
                                     </td>
-                                    <td width="16%">{{ l.nickname }}
+                                    <td width="16%">{{ admin.nickname }}
                                     </td>
-                                    <td width="12%">{{ l.authority }}
+                                    <td width="12%">{{ admin.authority }}
                                     </td>
-                                    <td width="25%">{{ l.latest_login_date }}
+                                    <td width="25%">{{ admin.latest_login_date }}
                                     </td>
                                     <td width="10%">
-                                        <button type="button" id="{{ l.id }}" class="btn btn-danger"
+                                        <button type="button" id="{{ admin.id }}" class="btn btn-danger"
                                                 onclick="delete_admin(this.id);">删除
                                         </button>
                                     </td>
@@ -264,14 +262,14 @@
 
                         <div id="comment_manage" hidden>
                             <br>
-                            共{{ comments_count}}条评论<br><br>
+                            共{{ comments_count }}条评论<br><br>
                             <table>
                                 <tr>
                                     <td width="5%">id
                                     </td>
                                     <td width="10%">文章id
                                     </td>
-                                    <td width="10%">用户名
+                                    <td width="10%">回复名
                                     </td>
                                     <td width="35%">评论内容
                                     </td>
@@ -282,29 +280,29 @@
                                     <td width="10%">删除
                                     </td>
                                 </tr>
-                                {% for l in comment_lst %}
+                                {% for comment in comment_lst %}
                                 <tr>
-                                    <td width="5%">{{ l.id }}
+                                    <td width="5%">{{ comment.id }}
                                     </td>
-                                    <td width="10%">{{ l.article_id }}
+                                    <td width="10%">{{ comment.article_id }}
                                     </td>
-                                    <td width="10%">{{ l.reply_name }}
+                                    <td width="10%">{{ comment.reply_name }}
                                     </td>
-                                    <td width="35%">{{ l.content }}
+                                    <td width="35%">{{ comment.content }}
                                     </td>
-                                    <td width="15%">{{ l.comment_date }}
+                                    <td width="15%">{{ comment.comment_date }}
                                     </td>
-                                    <td width="15%">{{ l.location }}
+                                    <td width="15%">{{ comment.location }}
                                     </td>
                                     <td width="10%">
-                                        <button type="button" id="{{ l.id }}-{{ l.article_id }}" class="btn btn-danger"
+                                        <button type="button" id="{{ comment.id }}-{{ comment.article_id }}"
+                                                class="btn btn-danger"
                                                 onclick="delete_comment(this.id);">删除
                                         </button>
                                     </td>
                                 </tr>
                                 {% endfor %}
                             </table>
-
                         </div>
 
 
@@ -665,7 +663,6 @@
                 }
             );
         }
-
 </script>
 
 <a id="rocket" href="#top" class=""></a>

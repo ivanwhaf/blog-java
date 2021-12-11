@@ -4,24 +4,24 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/static/photo/1.png">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="/static/photo/1.png" rel="shortcut icon">
     <script async defer src="/static/js/buttons.js"></script>
     <title>
         Add Admin - Ivan | Blog
     </title>
 
     <!-- Bootstrap Core CSS --><!---->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/beantech.min.css">
+    <link href="/static/css/beantech.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/css/donate.css">
+    <link href="/static/css/donate.css" rel="stylesheet">
 
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/static/css/rocket.css">
+    <link href="/static/css/rocket.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,10 +30,10 @@
 <body ontouchstart="">
 <!-- Post Header -->
 <style type="text/css">
-        header.intro-header {
-            background-image: url('/static/photo/add.jpg')
-                /*page*/
-        }
+    header.intro-header {
+        background-image: url('/static/photo/add.jpg')
+        /*page*/
+    }
 </style>
 
 <header class="intro-header">
@@ -59,7 +59,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
+            <button class="navbar-toggle" type="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -100,32 +100,33 @@
 </nav>
 
 <script>
-        // Drop Bootstarp low-performance Navbar
-        // Use customize navbar with high-quality material design animation
-        // in high-perf jank-free CSS3 implementation
-        var $body = document.body;
-        var $toggle = document.querySelector('.navbar-toggle');
-        var $navbar = document.querySelector('#huxblog_navbar');
-        var $collapse = document.querySelector('.navbar-collapse');
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-        $toggle.addEventListener('click', handleMagic)
-        function handleMagic(e) {
-            if ($navbar.className.indexOf('in') > 0) {
-                // CLOSE
-                $navbar.className = " ";
-                // wait until animation end.
-                setTimeout(function () {
-                    // prevent frequently toggle
-                    if ($navbar.className.indexOf('in') < 0) {
-                        $collapse.style.height = "0px"
-                    }
-                }, 400)
-            } else {
-                // OPEN
-                $collapse.style.height = "auto"
-                $navbar.className += " in";
-            }
+    $toggle.addEventListener('click', handleMagic)
+
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function () {
+                // prevent frequently toggle
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
         }
+    }
 
 </script>
 
@@ -136,12 +137,12 @@
                 <div class="col-md-25">
                     <br>
 
-                    <form id="form" accept-charset="utf-8">
+                    <form accept-charset="utf-8" id="form">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" name="username" id="username" class="form-control"
-                                           placeholder="用户名（最大长度30）" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="username" name="username" placeholder="用户名（最大长度30）"
+                                           style="height:40px;font-size:18px;" type="text">
                                 </div>
                             </div>
                         </div>
@@ -149,8 +150,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" name="password" id="password" class="form-control"
-                                           placeholder="密码（最大长度30）" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="password" name="password" placeholder="密码（最大长度30）"
+                                           style="height:40px;font-size:18px;" type="text">
                                 </div>
                             </div>
                         </div>
@@ -158,8 +159,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" name="nickname" id="nickname" class="form-control"
-                                           placeholder="昵称（最大长度30）" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="nickname" name="nickname" placeholder="昵称（最大长度30）"
+                                           style="height:40px;font-size:18px;" type="text">
                                 </div>
                             </div>
                         </div>
@@ -167,12 +168,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <select style="height:30px;width:150px" id="select_sex" onchange="sex_option_change();">
+                                    <select id="select_sex" onchange="sex_option_change();"
+                                            style="height:30px;width:150px">
                                         <option>男</option>
                                         <option>女</option>
                                     </select>
-                                    <input type="text" name="sex" readonly id="sex" class="form-control"
-                                           placeholder="性别" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="sex" name="sex" placeholder="性别" readonly
+                                           style="height:40px;font-size:18px;" type="text">
                                 </div>
                             </div>
                         </div>
@@ -180,13 +182,15 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <select style="height:30px;width:150px" id="select_authority" onchange="authority_option_change();">
+                                    <select id="select_authority" onchange="authority_option_change();"
+                                            style="height:30px;width:150px">
                                         <option>1（最高等级）</option>
                                         <option>2（普通管理员）</option>
                                         <option>3（普通用户）</option>
                                     </select>
-                                    <input type="text" name="authority" readonly id="authority" class="form-control"
-                                           placeholder="权限等级（1为最高等级，2为普通管理员，3为普通用户）" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="authority" name="authority" placeholder="权限等级（1为最高等级，2为普通管理员，3为普通用户）" readonly
+                                           style="height:40px;font-size:18px;"
+                                           type="text">
                                 </div>
                             </div>
                         </div>
@@ -194,8 +198,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="button" onclick="add_admin();"
-                                           class="btn btn-primary btn-outline btn-lg btn-block" value="Submit">
+                                    <input class="btn btn-primary btn-outline btn-lg btn-block" onclick="add_admin();"
+                                           type="button" value="Submit">
                                 </div>
                             </div>
                         </div>
@@ -215,7 +219,7 @@
                 <ul class="list-inline text-center">
 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/wu-yu-fan-66-20">
+                        <a href="https://www.zhihu.com/people/wu-yu-fan-66-20" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-stack-1x fa-inverse">知</i>
@@ -224,7 +228,7 @@
                     </li>
 
                     <li>
-                        <a target="_blank" href="https://weibo.com/u/2438209224">
+                        <a href="https://weibo.com/u/2438209224" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -233,7 +237,7 @@
                     </li>
 
                     <li>
-                        <a target="_blank" href="https://github.com/ivanwhaf">
+                        <a href="https://github.com/ivanwhaf" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -251,9 +255,9 @@
                             <i class="fa fa-heart"></i>
                         </span>
                     re-Ported by <a href="http://www.ivana.work">Ivan</a> |
-                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
-                            width="100px" height="20px"
-                            src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true"> >
+                    <iframe frameborder="0" height="20px" scrolling="0"
+                            src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true" style="margin-left: 2px; margin-bottom:-5px;"
+                            width="100px"> >
                     </iframe>
                     <br>
                     苏ICP备19029983号
@@ -274,91 +278,89 @@
 
 <script>
 
-        var select = document.getElementById('select_authority');
-        var options = select.options;
-        var authority = document.getElementById("authority");
-        authority.value = select.options[0].text.substring(0, 1);
+    var select = document.getElementById('select_authority');
+    var options = select.options;
+    var authority = document.getElementById("authority");
+    authority.value = select.options[0].text.substring(0, 1);
 
-        var select = document.getElementById('select_sex');
-        var options = select.options;
-        var sex = document.getElementById("sex");
-        sex.value = select.options[0].text;
+    var select = document.getElementById('select_sex');
+    var options = select.options;
+    var sex = document.getElementById("sex");
+    sex.value = select.options[0].text;
 
 
-        function add_admin() {
-            id = $("#id").val();
-            username = $("#username").val();
-            password = $("#password").val();
-            nickname = $("#nickname").val();
-            sex = $("#sex").val();
-            authority = $("#authority").val();
+    function add_admin() {
+        id = $("#id").val();
+        username = $("#username").val();
+        password = $("#password").val();
+        nickname = $("#nickname").val();
+        sex = $("#sex").val();
+        authority = $("#authority").val();
 
-            if (username == "" || password == "" || nickname == "") {
-                alert("请填写完整信息!");
-                return false;
-            }
-            if (password.length<6){
-                alert("密码长度过短!");
-                return false;
-            }
+        if (username == "" || password == "" || nickname == "") {
+            alert("请填写完整信息!");
+            return false;
+        }
+        if (password.length < 6) {
+            alert("密码长度过短!");
+            return false;
+        }
 
-            //content=encodeURI($("#content").val());
-            //var form = new FormData($("#form")[0]);
-            var form = new FormData();
-            form.append("username", username);
-            form.append("password", password);
-            form.append("nickname", nickname);
-            form.append("sex", sex);
-            form.append("authority", authority);
-            $.ajax({
-                url: "/api/admin",
-                type: "post",
-                data: form,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                async: true,
-                success: function (data) {
-                    if (data == 1) {
-                        alert('管理员账户添加成功!');
-                        window.location.href = "/manage";
+        //content=encodeURI($("#content").val());
+        //var form = new FormData($("#form")[0]);
+        var form = new FormData();
+        form.append("username", username);
+        form.append("password", password);
+        form.append("nickname", nickname);
+        form.append("sex", sex);
+        form.append("authority", authority);
+        $.ajax({
+            url: "/api/admin",
+            type: "post",
+            data: form,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            async: true,
+            success: function (data) {
+                if (data == 1) {
+                    alert('管理员账户添加成功!');
+                    window.location.href = "/manage";
+                } else if (data == 0) {
+                    alert('管理员账户添加失败!');
+                } else {
+                    var r = confirm("您尚未登录或权限不足，添加失败！");
+                    if (r != true) {
+                        return false;
                     }
-                    else if (data == 0) {
-                        alert('管理员账户添加失败!');
-                    }
-                    else {
-                        var r = confirm("您尚未登录或权限不足，添加失败！");
-                        if (r != true) {
-                            return false;
-                        }
-                        window.location.href = "/manage";
-                    }
+                    window.location.href = "/manage";
                 }
-            })
-        }
+            }
+        })
+    }
 
-        function sex_option_change() {
-            var s = document.getElementById("select_sex");
-            var options = s.options;
-            var i = s.selectedIndex;
-            var v = s.options[i].text;
-            document.getElementById("sex").value = v;
-            $("#sex").attr("readonly", "readonly");
-        }
+    function sex_option_change() {
+        var s = document.getElementById("select_sex");
+        var options = s.options;
+        var i = s.selectedIndex;
+        var v = s.options[i].text;
+        document.getElementById("sex").value = v;
+        $("#sex").attr("readonly", "readonly");
+    }
 
-        function authority_option_change() {
-            var s = document.getElementById("select_authority");
-            var options = s.options;
-            var i = s.selectedIndex;
-            var v = s.options[i].text.substring(0, 1);
-            document.getElementById("authority").value = v;
-            $("#authority").attr("readonly", "readonly");
-        }
+    function authority_option_change() {
+        var s = document.getElementById("select_authority");
+        var options = s.options;
+        var i = s.selectedIndex;
+        var v = s.options[i].text.substring(0, 1);
+        document.getElementById("authority").value = v;
+        $("#authority").attr("readonly", "readonly");
+    }
 
 </script>
 
-<a id="rocket" href="#top" class=""></a>
-<script type="text/javascript" src="/static/js/totop.js?v=1.0.0" async=""></script>
+<a class="" href="#top" id="rocket"></a>
+<script async="" src="/static/js/totop.js?v=1.0.0" type="text/javascript"></script>
 </body>
 
 </html>

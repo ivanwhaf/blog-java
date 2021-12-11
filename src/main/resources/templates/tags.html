@@ -129,18 +129,18 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 {% for tag in rdic %}
-                <a href="#{{ key }}">{{ tag }}</a>
+                <a href="#{{ tag }}">{{ tag }}</a>
                 {% endfor %}
             </div>
 
             {% for tag in rdic %}
-            <div class="one-tag-list" id="{{key}}">
+            <div class="one-tag-list" id="{{ tag }}">
                     <span class="fa fa-tag listing-seperator">
                         <span class="tag-text">{{ tag }}</span>
                     </span>
                 {% for article in rdic[tag] %}
                 <div class="post-preview">
-                    <a href="/article/{{tag}}/{{article.id}}">
+                    <a href="/article/{{ tag }}/{{ article.id }}">
                         <h2 class="post-title">[{{ tag }}] {{ article.title }}</h2>
                     </a>
                 </div>

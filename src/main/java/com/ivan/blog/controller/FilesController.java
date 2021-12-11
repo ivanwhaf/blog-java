@@ -2,16 +2,17 @@ package com.ivan.blog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class FilesController {
-    @RequestMapping("/files")
-    public String files(){
+    @RequestMapping(value = "/files", method = RequestMethod.GET)
+    public String files() {
         return "files";
     }
 
-    @RequestMapping("/album")
-    public String album(){
+    @RequestMapping(value = "/album", method = RequestMethod.GET)
+    public String album() {
         return "album";
     }
 }

@@ -32,7 +32,6 @@
             background-image: url('/static/photo/add.jpg')
                 /*page*/
         }
-
 </style>
 
 <header class="intro-header">
@@ -166,7 +165,7 @@
             <div class="form-group">
                 <div class="col-md-18">
                     <br>
-                    <input class="form-control" id="add_key" name="key" onkeydown="enter2();"
+                    <input class="form-control" id="add_key" name="key"
                            placeholder="请输入要增加的单词" style="height:55px;font-size:18px;" type="text">
                 </div>
                 <br>
@@ -346,7 +345,7 @@
         function add() {
             key = $("#add_key").val();
             value=$("#add_value").val();
-            if (key == "") {
+            if (key == "" || value =="") {
                 alert('请填写完整！');
                 return false;
             }
@@ -390,7 +389,6 @@
                         $("#add_key").val("")
                         $("#add_value").val("");
                     }
-
                 }
             })
         }

@@ -4,22 +4,22 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <script async defer src="/static/js/buttons.js"></script>
     <title>
         Archives - Ivan | Blog
     </title>
-    <link rel="icon" href="/static/photo/1.png" type="image/png"/>
+    <link href="/static/photo/1.png" rel="icon" type="image/png"/>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/beantech.min.css">
+    <link href="/static/css/beantech.min.css" rel="stylesheet">
 
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/static/css/rocket.css">
+    <link href="/static/css/rocket.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -28,10 +28,10 @@
 <body ontouchstart="">
 <!-- Post Header -->
 <style type="text/css">
-        header.intro-header {
-            background-image: url('/static/photo/archive.jpg')
-                /*page*/
-        }
+    header.intro-header {
+        background-image: url('/static/photo/archive.jpg')
+        /*page*/
+    }
 </style>
 
 <header class="intro-header">
@@ -56,7 +56,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
+            <button class="navbar-toggle" type="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -93,32 +93,33 @@
     <!-- /.container -->
 </nav>
 <script>
-        // Drop Bootstarp low-performance Navbar
-        // Use customize navbar with high-quality material design animation
-        // in high-perf jank-free CSS3 implementation
-        var $body = document.body;
-        var $toggle = document.querySelector('.navbar-toggle');
-        var $navbar = document.querySelector('#huxblog_navbar');
-        var $collapse = document.querySelector('.navbar-collapse');
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-        $toggle.addEventListener('click', handleMagic)
-        function handleMagic(e) {
-            if ($navbar.className.indexOf('in') > 0) {
-                // CLOSE
-                $navbar.className = " ";
-                // wait until animation end.
-                setTimeout(function () {
-                    // prevent frequently toggle
-                    if ($navbar.className.indexOf('in') < 0) {
-                        $collapse.style.height = "0px"
-                    }
-                }, 400)
-            } else {
-                // OPEN
-                $collapse.style.height = "auto"
-                $navbar.className += " in";
-            }
+    $toggle.addEventListener('click', handleMagic)
+
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function () {
+                // prevent frequently toggle
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
         }
+    }
 </script>
 
 <div class="container">
@@ -134,7 +135,7 @@
             <!-- Main Content -->
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="margin:0px;" id='ar'>
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id='ar' style="margin:0px;">
                         <br>
                         {% for year in rdic %}
                         <div class="one-tag-list">
@@ -146,7 +147,7 @@
                                 {% for article in rdic[year] %}
                                 <li>
                                     {{ article.md }}
-                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                    <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                                     <a href="/article/{{ article.tag }}/{{ article.id }}" style="color: #0085a1">
                                         <span>{{ article.title }}</span>
                                     </a>
@@ -174,18 +175,21 @@
             <section>
                 <h5><a href="javascript:void(0)">FEATURED TAGS</a></h5>
                 <div class="tags">
-                    <a href="javascript:void(0)">Python</a>
-                    <a href="javascript:void(0)">Java</a>
-                    <a href="javascript:void(0)">C++</a>
                     <a href="javascript:void(0)">AI</a>
                     <a href="javascript:void(0)">机器学习</a>
-                    <a href="javascript:void(0)">图像识别</a>
+                    <a href="javascript:void(0)">深度学习</a>
+                    <a href="javascript:void(0)">主动学习</a>
+                    <a href="javascript:void(0)">半监督学习</a>
+                    <a href="javascript:void(0)">CV</a>
                     <a href="javascript:void(0)">数据分析</a>
-                    <a href="javascript:void(0)">机器人</a>
                     <a href="javascript:void(0)">物联网</a>
+                    <a href="javascript:void(0)">机器人</a>
                     <a href="javascript:void(0)">Unity3D</a>
                     <a href="javascript:void(0)">Linux</a>
                     <a href="javascript:void(0)">网络安全</a>
+                    <a href="javascript:void(0)">Python</a>
+                    <a href="javascript:void(0)">Java</a>
+                    <a href="javascript:void(0)">C++</a>
                 </div>
             </section>
             <hr>
@@ -199,7 +203,7 @@
 
                     <ul class="list-inline">
                         <li>
-                            <a target="_blank" href="https://github.com/ivanwhaf">
+                            <a href="https://github.com/ivanwhaf" target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -208,7 +212,7 @@
                         </li>
 
                         <li>
-                            <a target="_blank" href="javascript:void(0);">
+                            <a href="javascript:void(0);" target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -217,7 +221,7 @@
                         </li>
 
                         <li>
-                            <a target="_blank" href="javascript:void(0);">
+                            <a href="javascript:void(0);" target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-stack-1x fa-inverse">知</i>
@@ -259,7 +263,7 @@
                         </li>
 
                         <li>
-                            <a target="_blank" href="https://github.com/ivanwhaf">
+                            <a href="https://github.com/ivanwhaf" target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -277,9 +281,9 @@
                                 <i class="fa fa-heart"></i>
                             </span>
                         re-Ported by <a href="http://www.ivana.work">Ivan</a> |
-                        <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
-                                width="100px" height="20px"
-                                src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true">
+                        <iframe frameborder="0" height="20px" scrolling="0"
+                                src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true" style="margin-left: 2px; margin-bottom:-5px;"
+                                width="100px">
                             >
                         </iframe>
                         <br>
@@ -298,8 +302,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="/static/js/hux-blog.min.js"></script>
 
-    <a id="rocket" href="#top" class=""></a>
-    <script type="text/javascript" src="/static/js/totop.js?v=1.0.0" async=""></script>
+    <a class="" href="#top" id="rocket"></a>
+    <script async="" src="/static/js/totop.js?v=1.0.0" type="text/javascript"></script>
 </div>
 </body>
 </html>

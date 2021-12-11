@@ -4,19 +4,19 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/static/photo/1.png">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="/static/photo/1.png" rel="shortcut icon">
     <script async defer src="/static/js/buttons.js"></script>
     <title>
         Add - Ivan | Blog
     </title>
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/beantech.min.css">
-    <link rel="stylesheet" href="/static/css/donate.css">
+    <link href="/static/css/beantech.min.css" rel="stylesheet">
+    <link href="/static/css/donate.css" rel="stylesheet">
 
     <!-- Pygments Highlight CSS -->
     <!--
@@ -25,21 +25,21 @@
     <link rel="stylesheet" href="/static/css/signature.css">
     <link rel="stylesheet" href="/static/css/toc.css">
     -->
-    <link rel="stylesheet" href="/static/css/rocket.css">
+    <link href="/static/css/rocket.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="/static/css/editormd.min.css">
+    <link href="/static/css/editormd.min.css" rel="stylesheet">
 </head>
 
 <body ontouchstart="">
 <!-- Post Header -->
 <style type="text/css">
-        header.intro-header {
-            background-image: url('/static/photo/add.jpg')
-                /*page*/
-        }
+    header.intro-header {
+        background-image: url('/static/photo/add.jpg')
+        /*page*/
+    }
 
 </style>
 
@@ -66,7 +66,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
+            <button class="navbar-toggle" type="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -108,32 +108,33 @@
 </nav>
 
 <script>
-        // Drop Bootstarp low-performance Navbar
-        // Use customize navbar with high-quality material design animation
-        // in high-perf jank-free CSS3 implementation
-        var $body = document.body;
-        var $toggle = document.querySelector('.navbar-toggle');
-        var $navbar = document.querySelector('#huxblog_navbar');
-        var $collapse = document.querySelector('.navbar-collapse');
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-        $toggle.addEventListener('click', handleMagic)
-        function handleMagic(e) {
-            if ($navbar.className.indexOf('in') > 0) {
-                // CLOSE
-                $navbar.className = " ";
-                // wait until animation end.
-                setTimeout(function () {
-                    // prevent frequently toggle
-                    if ($navbar.className.indexOf('in') < 0) {
-                        $collapse.style.height = "0px"
-                    }
-                }, 400)
-            } else {
-                // OPEN
-                $collapse.style.height = "auto"
-                $navbar.className += " in";
-            }
+    $toggle.addEventListener('click', handleMagic)
+
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function () {
+                // prevent frequently toggle
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
         }
+    }
 
 
 </script>
@@ -144,13 +145,13 @@
             <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
                 <div class="col-md-25">
                     <br>
-                    <form id="form" accept-charset="utf-8">
+                    <form accept-charset="utf-8" id="form">
 
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" name="title" id="title" class="form-control"
-                                           placeholder="Title" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="title" name="title" placeholder="Title"
+                                           style="height:40px;font-size:18px;" type="text">
                                 </div>
                             </div>
                         </div>
@@ -158,8 +159,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" name="subtitle" id="subtitle" class="form-control"
-                                           placeholder="Subtitle" style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle"
+                                           style="height:40px;font-size:18px;" type="text">
                                 </div>
                             </div>
                         </div>
@@ -167,13 +168,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <select style="height:30px;width:100px" id="select" onchange="option_change();">
-                                        {% for t in tags %}
-                                        <option>{{ t }}</option>
+                                    <select id="select" onchange="option_change();" style="height:30px;width:100px">
+                                        {% for tag in tags %}
+                                        <option>{{ tag }}</option>
                                         {% endfor %}
                                     </select>
-                                    <input type="text" name="tag" id="tag" class="form-control" placeholder="Tag"
-                                           style="height:40px;font-size:18px;">
+                                    <input class="form-control" id="tag" name="tag" placeholder="Tag" style="height:40px;font-size:18px;"
+                                           type="text">
                                 </div>
                             </div>
                         </div>
@@ -190,7 +191,7 @@
                         -->
 
                         <div id="content-editor">
-                                <textarea style="display:none;" id="content">
+                                <textarea id="content" style="display:none;">
 
                                 </textarea>
                         </div>
@@ -198,8 +199,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="button" onclick="add_article();"
-                                           class="btn btn-primary btn-outline btn-lg btn-block" value="Submit">
+                                    <input class="btn btn-primary btn-outline btn-lg btn-block" onclick="add_article();"
+                                           type="button" value="Submit">
                                 </div>
                             </div>
                         </div>
@@ -222,7 +223,7 @@
                 <ul class="list-inline text-center">
 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/wu-yu-fan-66-20">
+                        <a href="https://www.zhihu.com/people/wu-yu-fan-66-20" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-stack-1x fa-inverse">知</i>
@@ -232,7 +233,7 @@
 
 
                     <li>
-                        <a target="_blank" href="https://weibo.com/u/2438209224">
+                        <a href="https://weibo.com/u/2438209224" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -242,7 +243,7 @@
 
 
                     <li>
-                        <a target="_blank" href="https://github.com/ivanwhaf">
+                        <a href="https://github.com/ivanwhaf" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -261,9 +262,9 @@
                             <i class="fa fa-heart"></i>
                         </span>
                     re-Ported by <a href="http://www.ivana.work">Ivan</a> |
-                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
-                            width="100px" height="20px"
-                            src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true"> >
+                    <iframe frameborder="0" height="20px" scrolling="0"
+                            src="//ghbtns.com/github-btn.html?user=ivanwhaf&repo=xxqg-helper&type=star&count=true" style="margin-left: 2px; margin-bottom:-5px;"
+                            width="100px"> >
                     </iframe>
 
                     <br>
@@ -305,34 +306,33 @@
         imageUpload: true,
         imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
         imageUploadURL: "/api/editormd/album",
-        onload: function(){
+        onload: function () {
             initPasteDragImg(this);
         }
     });
 
-    function initPasteDragImg(Editor){
+    function initPasteDragImg(Editor) {
         var doc = document.getElementById(Editor.id)
         doc.addEventListener('paste', function (event) {
-        var items = (event.clipboardData || window.clipboardData).items;
-        var file = null;
-        if (items && items.length) {
-        // 搜索剪切板items
-            for (var i = 0; i < items.length; i++) {
-                if (items[i].type.indexOf('image') !== -1) {
-                    file = items[i].getAsFile();
-                    break;
+            var items = (event.clipboardData || window.clipboardData).items;
+            var file = null;
+            if (items && items.length) {
+                // 搜索剪切板items
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].type.indexOf('image') !== -1) {
+                        file = items[i].getAsFile();
+                        break;
+                    }
                 }
-            }
-        }
-        else {
-            console.log("当前浏览器不支持");
+            } else {
+                console.log("当前浏览器不支持");
                 return;
             }
             if (!file) {
                 console.log("粘贴内容非图片");
                 return;
             }
-            uploadImg(file,Editor);
+            uploadImg(file, Editor);
         });
 
         var dashboard = document.getElementById(Editor.id)
@@ -347,22 +347,21 @@
         dashboard.addEventListener("drop", function (e) {
             e.preventDefault()
             e.stopPropagation()
-         var files = this.files || e.dataTransfer.files;
-         uploadImg(files[0],Editor);
-         })
+            var files = this.files || e.dataTransfer.files;
+            uploadImg(files[0], Editor);
+        })
     }
 
-    function uploadImg(file,Editor){
+    function uploadImg(file, Editor) {
         var formData = new FormData();
-        if(file==undefined){
+        if (file == undefined) {
             alert("不支持的文件类型!");
             return;
         }
         //var fileName=new Date().getTime()+"."+file.name.split(".").pop();
         var fileName = file.name;
-        if(/\.(png|jpg|jpeg|gif|bmp|ico|webp)$/.test(fileName)){
-        }
-        else{
+        if (/\.(png|jpg|jpeg|gif|bmp|ico|webp)$/.test(fileName)) {
+        } else {
             alert("不支持的文件类型!");
             return;
         }
@@ -376,15 +375,15 @@
             contentType: false,
             dataType: 'json',
             success: function (msg) {
-                var success=msg['success'];
-                if(success==1){
-                    var url=msg["url"];
-                    if(/\.(png|jpg|jpeg|gif|bmp|ico|webp)$/.test(url)){
-                        Editor.insertValue("![image]("+msg["url"]+")");
-                    }else{
-                        Editor.insertValue("[下载附件]("+msg["url"]+")");
+                var success = msg['success'];
+                if (success == 1) {
+                    var url = msg["url"];
+                    if (/\.(png|jpg|jpeg|gif|bmp|ico|webp)$/.test(url)) {
+                        Editor.insertValue("![image](" + msg["url"] + ")");
+                    } else {
+                        Editor.insertValue("[下载附件](" + msg["url"] + ")");
                     }
-                }else{
+                } else {
                     alert(msg["message"]);
                 }
             }
@@ -400,8 +399,8 @@
         //var content_html=editor.getHTML(); //获取markdown HTML文本
         var content_html = editor.getPreviewedHTML();
         if (title == "" || tag == "" || content_md == "") {
-                alert("请填写完整信息!");
-                return false;
+            alert("请填写完整信息!");
+            return false;
         }
         //content=encodeURI($("#content").val());
         //var form = new FormData($("#form")[0]);
@@ -424,12 +423,10 @@
                 if (data == 1) {
                     alert('博客添加成功!');
                     window.location.href = "/";
-                }
-                else if (data == 0) {
+                } else if (data == 0) {
                     alert('博客添加失败!');
-                }
-                else if (data == -1) {
-                var r = confirm("您尚未登录!确认马上登录么？");
+                } else if (data == -1) {
+                    var r = confirm("您尚未登录!确认马上登录么？");
                     if (r != true) {
                         return false;
                     }
@@ -449,15 +446,15 @@
             selected = indent + selected.replace(/\n/g, '\n' + indent);
             this.value = this.value.substring(0, start) + selected + this.value.substring(end);
             this.setSelectionRange(start + indent.length, start + selected.length);
-            }
-        })
-
-        var select = document.getElementById('select');
-        var options = select.options;
-        if (options.length > 0) {
-            var tag = document.getElementById("tag");
-            tag.value = select.options[0].value;
         }
+    })
+
+    var select = document.getElementById('select');
+    var options = select.options;
+    if (options.length > 0) {
+        var tag = document.getElementById("tag");
+        tag.value = select.options[0].value;
+    }
 
     function option_change() {
         s = document.getElementById("select");
@@ -468,7 +465,7 @@
 
 </script>
 
-<a id="rocket" href="#top" class=""></a>
-<script type="text/javascript" src="/static/js/totop.js?v=1.0.0" async=""></script>
+<a class="" href="#top" id="rocket"></a>
+<script async="" src="/static/js/totop.js?v=1.0.0" type="text/javascript"></script>
 </body>
 </html>
